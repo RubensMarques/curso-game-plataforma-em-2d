@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class apple : MonoBehaviour
+public class Apple : MonoBehaviour
 {
 
     Animator anim;
@@ -26,8 +26,8 @@ public class apple : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             anim.SetBool("collected", true);
-            gameController.instance.score += apples;
-            gameController.instance.UpdateScoreText();
+            GameController.instance.score += apples;
+            GameController.instance.UpdateScoreText();
 
             Destroy(gameObject, 0.5f);
         }

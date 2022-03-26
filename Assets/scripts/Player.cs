@@ -89,7 +89,9 @@ public class Player : MonoBehaviour
         {
             mov = false;
             anim.SetBool("dead", true);
+            Invoke("GameOver", 1f);
             Destroy(gameObject, 1f);
+            
         }
     }
 
@@ -97,12 +99,13 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.layer == 8)
         {
-            
             anim.SetBool("run", false);
-
         }
+    }
 
-        
+    void GameOver()
+    {
+        GameController.instance.ShowGameOver();
     }
 }
 
