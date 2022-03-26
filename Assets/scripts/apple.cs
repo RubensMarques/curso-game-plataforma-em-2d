@@ -28,7 +28,6 @@ public class Apple : MonoBehaviour
             anim.SetBool("collected", true);
             GameController.instance.score += apples;
             GameController.instance.UpdateScoreText();
-
             Destroy(gameObject, 0.5f);
         }
     }

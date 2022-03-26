@@ -28,8 +28,6 @@ public class Player : MonoBehaviour
         Move();
     }
 
-    
-
     void CheckInput()
     {
         if (Input.GetKeyDown(KeyCode.Space) && nPulo > 0)
@@ -88,6 +86,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.layer == 9)
         {
             mov = false;
+            nPulo = 0;
             anim.SetBool("dead", true);
             Invoke("GameOver", 1f);
             Destroy(gameObject, 1f);
