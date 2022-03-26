@@ -7,26 +7,28 @@ public class Player : MonoBehaviour
 
     
     Rigidbody2D player;
+    
     Animator anim;
     float speed = 4, jumpForce = 10;
-    int nPulo = 2;
+    public int nPulo = 2;
+    bool mov=true;
+
     // Start is called before the first frame update
     void Start()
     {
         player = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         CheckInput();
-    }
-
-    private void FixedUpdate()
-    {
         Move();
     }
+
+    
 
     void CheckInput()
     {
@@ -36,8 +38,13 @@ public class Player : MonoBehaviour
 
     void Move()
     {
-        Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
-        transform.position += movement * Time.deltaTime * speed;
+
+        if (mov)
+        {
+            Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
+            transform.position += movement * Time.deltaTime * speed;
+        }
+            
         
         if (Input.GetAxis("Horizontal") > 0f)
         {
@@ -63,8 +70,9 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            player.velocity = Vector2.up * jumpForce;
             nPulo--;
+            player.velocity = Vector2.up * jumpForce;
+            anim.SetBool("jump", true);
             
         }
     }
@@ -74,8 +82,27 @@ public class Player : MonoBehaviour
         if (collision.gameObject.layer == 8)
         {
             nPulo = 2;
-            
+            anim.SetBool("jump", false);
         }
+
+        if (collision.gameObject.layer == 9)
+        {
+            mov = false;
+            anim.SetBool("dead", true);
+            Destroy(gameObject, 1f);
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == 8)
+        {
+            
+            anim.SetBool("run", false);
+
+        }
+
+        
     }
 }
 
