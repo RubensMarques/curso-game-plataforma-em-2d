@@ -7,7 +7,6 @@ public class Player : MonoBehaviour
 
     
     Rigidbody2D player;
-    
     Animator anim;
     float speed = 4, jumpForce = 10;
     public int nPulo = 2;
@@ -18,6 +17,7 @@ public class Player : MonoBehaviour
     {
         player = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        
         
     }
 
@@ -77,6 +77,13 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.layer == 11)
+        {
+            player.velocity = Vector2.up * jumpForce;
+            anim.SetBool("jump", false);
+        }
+
+
         if (collision.gameObject.layer == 8)
         {
             nPulo = 2;
@@ -92,6 +99,8 @@ public class Player : MonoBehaviour
             Destroy(gameObject, 1f);
             
         }
+
+        
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -99,6 +108,14 @@ public class Player : MonoBehaviour
         if (collision.gameObject.layer == 8)
         {
             anim.SetBool("run", false);
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if(collision.gameObject.layer == 12)
+        {
+            nPulo = 0;
         }
     }
 
