@@ -50,15 +50,15 @@ public class head : MonoBehaviour
         }
     }
 
-    bool pd;
+    
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Player" && !pd)
+        if(collision.gameObject.tag == "Player")
         {
             
                 collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.up * 5;
                 anim.SetTrigger("die");
-                Destroy(gameObject, 1f);
+                Destroy(gameObject, 0.2f);
                //anim.SetBool("idle", true);
             
         }

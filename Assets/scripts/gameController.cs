@@ -7,30 +7,69 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-
+   
     public int score;
-    public static GameController instance;
+    public static GameController gc;
     public Text scoreText;
-    public GameObject gameOver;
+    public int totalApples;
+    public GameObject message;
+
+   
+
+    Player player;
+    bool started;
+    
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        instance = this;
+
+
+        if (gc == null)
+        {
+            gc = this;
+            
+
+        }
+        else if (gc != this)
+        {
+            Destroy(gameObject);
+        }
+
     }
 
-    public void UpdateScoreText()
+    private void Start()
     {
+        
+    }
+
+    private void Update()
+    {
+
+    }
+    
+    public void ShowGameOver()
+    {
+        Destroy(gameObject);
+        SceneManager.LoadScene("lvl_1");
+
+    }
+
+    public void uptadeScore()
+    {
+        score++;
         scoreText.text = score.ToString();
     }
 
-    public void ShowGameOver()
-    {
-        gameOver.SetActive(true);
+    public void StartGame()
+    {   
+        SceneManager.LoadScene("lvl_1");
     }
 
-    public void restart(string lvlName)
+    public void Quit()
     {
-        SceneManager.LoadScene(lvlName);
+        UnityEditor.EditorApplication.isPlaying = false;
+        Application.Quit();
     }
    
 }

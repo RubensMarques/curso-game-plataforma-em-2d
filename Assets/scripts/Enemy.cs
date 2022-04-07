@@ -51,20 +51,5 @@ public class Enemy : MonoBehaviour
     }
     
     
-    /*private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            if(dirRight==true)
-            {
-                dirRight = dirRight=false;
-            }
-            else
-            {
-                dirRight = dirRight=true;
-            }
-        }
 
-
-    }*/
 }

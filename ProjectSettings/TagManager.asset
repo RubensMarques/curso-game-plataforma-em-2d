@@ -5,14 +5,16 @@ TagManager:
   serializedVersion: 2
   tags:
   - Trampoline
+  - apple
+  - Menu
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - start
   - Water
   - UI
-  - 
+  - apple
   - 
   - ground
   - death

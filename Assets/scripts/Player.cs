@@ -1,22 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
 
     
     Rigidbody2D player;
+    
+    CapsuleCollider2D caps;
+    
+    
     Animator anim;
-    float speed = 4, jumpForce = 10;
+    
+    public float speed, jumpForce;
     public int nPulo = 2;
-    bool mov=true;
+    public bool mov=true;
+
+
+
 
     // Start is called before the first frame update
     void Start()
     {
-        player = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
+       
+        
+            player = GetComponent<Rigidbody2D>();
+            caps = GetComponent<CapsuleCollider2D>();
+            anim = GetComponent<Animator>();
+            
+            GameController.gc.score = 0;
+        
+        //gcPlayer.gameOver.SetActive(false);
         
         
     }
@@ -24,7 +40,12 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         CheckInput();
+    }
+
+    private void FixedUpdate()
+    {
         Move();
     }
 
@@ -36,37 +57,38 @@ public class Player : MonoBehaviour
 
     void Move()
     {
+        float movement = Input.GetAxis("Horizontal");
+
 
         if (mov)
         {
-            Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
-            transform.position += movement * Time.deltaTime * speed;
-        }
             
-        
-        if (Input.GetAxis("Horizontal") > 0f)
+            player.velocity = new Vector2(movement * speed, player.velocity.y);
+        }
+         
+        if (movement > 0f && mov)
         {
             anim.SetBool("run", true);
             transform.eulerAngles = new Vector3(0f, 0f, 0f);
         }
 
-        if (Input.GetAxis("Horizontal") < 0f)
+        if (movement < 0f && mov)
         {
             anim.SetBool("run", true);
             transform.eulerAngles = new Vector3(0f, 180f, 0f);
 
         }
 
-        if (Input.GetAxis("Horizontal") == 0f)
+        if (movement == 0f && mov)
         {
             anim.SetBool("run", false);
         }
 
     }
 
-    void Jump()
+    void Jump() 
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && mov)
         {
             nPulo--;
             player.velocity = Vector2.up * jumpForce;
@@ -90,17 +112,11 @@ public class Player : MonoBehaviour
             anim.SetBool("jump", false);
         }
 
-        if (collision.gameObject.layer == 9)
+       if(collision.gameObject.layer == 9)
         {
-            mov = false;
-            nPulo = 0;
-            anim.SetBool("dead", true);
-            Invoke("GameOver", 1f);
-            Destroy(gameObject, 1f);
-            
+            SceneManager.LoadScene("gameOver");
         }
 
-        
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -117,11 +133,24 @@ public class Player : MonoBehaviour
         {
             nPulo = 0;
         }
+
     }
 
-    void GameOver()
+    
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        GameController.instance.ShowGameOver();
+        
+
+        if (collision.gameObject.CompareTag("apple"))
+        {
+
+            GameController.gc.uptadeScore();
+                //GameController.gc.RefreshScreen();
+          
+        }
     }
+   
+
+    
 }
 
