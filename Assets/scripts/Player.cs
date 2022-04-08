@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     Rigidbody2D player;
     
     CapsuleCollider2D caps;
-    
+    public AudioSource sJump; 
     
     Animator anim;
     
@@ -93,6 +93,8 @@ public class Player : MonoBehaviour
             nPulo--;
             player.velocity = Vector2.up * jumpForce;
             anim.SetBool("jump", true);
+            sJump.Play();
+
             
         }
     }

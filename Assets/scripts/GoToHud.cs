@@ -6,6 +6,7 @@ public class GoToHud : MonoBehaviour
 {
     bool go;
     public Transform hud;
+    public AudioSource apple;
     
     // Start is called before the first frame update
     void Awake()
@@ -19,6 +20,7 @@ public class GoToHud : MonoBehaviour
     {
         if (go)
         {
+            
             transform.position = Vector2.MoveTowards(transform.position, Camera.main.ScreenToWorldPoint(hud.position), 20 * Time.deltaTime);
             Destroy(gameObject, 2f);
         }
@@ -28,6 +30,7 @@ public class GoToHud : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Player"))
         {
+            apple.Play();
             go = true;
         }
     }

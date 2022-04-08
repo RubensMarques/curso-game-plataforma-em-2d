@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameOver : MonoBehaviour
 {
     Rigidbody2D player;
+    public AudioSource sound;
    
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,15 @@ public class GameOver : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
         
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == 8)
+        {
+            sound.Play();
+        }
     }
 }

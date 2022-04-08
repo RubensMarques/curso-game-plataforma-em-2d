@@ -9,6 +9,7 @@ public class NextLvl : MonoBehaviour
     public string lvlName;
     bool canNextLvl;
     Animator anim;
+    public AudioSource final;
 
     private void Start()
     {
@@ -28,10 +29,12 @@ public class NextLvl : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player" && canNextLvl)
         {
+            final.Play();
             SceneManager.LoadScene(lvlName);
         }
         else
         {
+            
             GameController.gc.message.SetActive(true);
         }
     }
