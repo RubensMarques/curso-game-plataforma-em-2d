@@ -7,6 +7,7 @@ public class FallingPlataform : MonoBehaviour
     TargetJoint2D target;
     BoxCollider2D box;
     Animator anim;
+    public AudioSource plat;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +32,7 @@ public class FallingPlataform : MonoBehaviour
 
         if(collision.gameObject.layer == 9)
         {
+            plat.Play();
             anim.SetBool("destroy", true);
             Destroy(gameObject, 0.3f);
         }

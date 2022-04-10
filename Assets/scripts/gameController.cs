@@ -9,10 +9,11 @@ public class GameController : MonoBehaviour
 {
    
     public int score;
-    public static GameController gc;
+    public static GameController instance;
     public Text scoreText;
     public int totalApples;
-    public GameObject message;
+    public GameObject message, gameOver, level;
+    
 
    
 
@@ -25,13 +26,13 @@ public class GameController : MonoBehaviour
     {
 
 
-        if (gc == null)
+        if (instance == null)
         {
-            gc = this;
+            instance = this;
             
 
         }
-        else if (gc != this)
+        else if (instance != this)
         {
             Destroy(gameObject);
         }
@@ -41,11 +42,15 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         
+        
+        Invoke("GameOverCanvas", 22f);
+        Invoke("Level", 2f);
+        
     }
 
     private void Update()
     {
-
+        
     }
     
     public void ShowGameOver()
@@ -71,5 +76,16 @@ public class GameController : MonoBehaviour
         UnityEditor.EditorApplication.isPlaying = false;
         Application.Quit();
     }
+
+    public void GameOverCanvas()
+    {
+        gameOver.SetActive(true);
+    }
+    
+    public void Level()
+    {
+        level.SetActive(false);
+    }
+
    
 }

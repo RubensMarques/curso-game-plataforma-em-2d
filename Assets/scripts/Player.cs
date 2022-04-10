@@ -30,9 +30,9 @@ public class Player : MonoBehaviour
             caps = GetComponent<CapsuleCollider2D>();
             anim = GetComponent<Animator>();
             
-            GameController.gc.score = 0;
+            GameController.instance.score = 0;
         
-        //gcPlayer.gameOver.SetActive(false);
+        //instancePlayer.gameOver.SetActive(false);
         
         
     }
@@ -146,8 +146,8 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("apple"))
         {
 
-            GameController.gc.uptadeScore();
-                //GameController.gc.RefreshScreen();
+            GameController.instance.uptadeScore();
+                //GameController.instance.RefreshScreen();
           
         }
     }

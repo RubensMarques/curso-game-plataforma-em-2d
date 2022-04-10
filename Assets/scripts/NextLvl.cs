@@ -5,11 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class NextLvl : MonoBehaviour
 {
-
+    private const int V = 0;
     public string lvlName;
     bool canNextLvl;
     Animator anim;
-    public AudioSource final;
+    //public AudioSource final;
 
     private void Start()
     {
@@ -19,9 +19,10 @@ public class NextLvl : MonoBehaviour
 
     private void Update()
     {
-        if (GameController.gc.totalApples - GameController.gc.score == 0)
+        if (GameController.instance.totalApples - GameController.instance.score == V)
         {
             anim.SetBool("collected", true);
+            //final.Play();
             canNextLvl = true;
         }
     }
@@ -29,13 +30,13 @@ public class NextLvl : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player" && canNextLvl)
         {
-            final.Play();
+            
             SceneManager.LoadScene(lvlName);
         }
         else
         {
             
-            GameController.gc.message.SetActive(true);
+            GameController.instance.message.SetActive(true);
         }
     }
 
@@ -43,7 +44,7 @@ public class NextLvl : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" && !canNextLvl)
         {
-            GameController.gc.message.SetActive(false);
+            GameController.instance.message.SetActive(false);
         }
         
     }

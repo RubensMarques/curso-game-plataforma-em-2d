@@ -57,11 +57,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: game_over SDF
+  m_Name: game_over sombra preta
   m_EditorClassIdentifier: 
-  hashCode: -175889746
+  hashCode: 1334737485
   material: {fileID: 5866333455197984683}
-  materialHashCode: -1032536370
+  materialHashCode: -846486707
   m_Version: 1.1.0
   m_SourceFontFileGUID: 5c4acbd49883ea9419970383351f7917
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 5c4acbd49883ea9419970383351f7917, type: 3}
@@ -2552,7 +2552,7 @@ Material:
     - _ColorMask: 15
     - _CullMode: 0
     - _Diffuse: 0.5
-    - _FaceDilate: 0
+    - _FaceDilate: 0.86
     - _FaceUVSpeedX: 0
     - _FaceUVSpeedY: 0
     - _GlowInner: 0.05
@@ -2566,12 +2566,12 @@ Material:
     - _OutlineSoftness: 0
     - _OutlineUVSpeedX: 0
     - _OutlineUVSpeedY: 0
-    - _OutlineWidth: 0.201
+    - _OutlineWidth: 0.566
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
-    - _ScaleRatioA: 0.8333333
-    - _ScaleRatioB: 0.6770833
-    - _ScaleRatioC: 0.6770833
+    - _ScaleRatioA: 0.51647556
+    - _ScaleRatioB: 0
+    - _ScaleRatioC: 0
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0

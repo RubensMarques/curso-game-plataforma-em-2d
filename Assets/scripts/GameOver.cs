@@ -1,19 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameOver : MonoBehaviour
 {
     Rigidbody2D player;
     public AudioSource sound;
-   
+    public Button but1;
     // Start is called before the first frame update
     void Start()
     {
         
         player = GetComponent<Rigidbody2D>();
-       
-      
+        but1.Select();
+
     }
 
     // Update is called once per frame

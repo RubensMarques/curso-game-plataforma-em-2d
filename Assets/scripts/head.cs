@@ -7,7 +7,7 @@ public class head : MonoBehaviour
     public float movTime, timer, speed;
 
     public bool dirRight = true;
-
+    public AudioSource enemyDie;
     SpriteRenderer sr;
     Rigidbody2D enemy;
 
@@ -57,6 +57,7 @@ public class head : MonoBehaviour
         {
             
                 collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.up * 5;
+                enemyDie.Play();
                 anim.SetTrigger("die");
                 Destroy(gameObject, 0.2f);
                //anim.SetBool("idle", true);
