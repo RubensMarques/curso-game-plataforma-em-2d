@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class head : MonoBehaviour
+public class Head : MonoBehaviour
 {
     public float movTime, timer, speed;
 
@@ -53,7 +53,7 @@ public class head : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Player")
+        if(collision.gameObject.CompareTag("Player"))
         {
             
                 collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.up * 5;

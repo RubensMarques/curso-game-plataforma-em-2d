@@ -21,12 +21,6 @@ public class Buttons : MonoBehaviour
             but1.Select();
        
     }
-    
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void HowToPlay()
     {

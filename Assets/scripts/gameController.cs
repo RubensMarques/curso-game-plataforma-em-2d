@@ -13,13 +13,7 @@ public class GameController : MonoBehaviour
     public Text scoreText;
     public int totalApples;
     public GameObject message, gameOver, level;
-    
-
    
-
-    Player player;
-    bool started;
-    
 
     // Start is called before the first frame update
     void Awake()
@@ -43,13 +37,8 @@ public class GameController : MonoBehaviour
     {
         
         
-        Invoke("GameOverCanvas", 22f);
-        Invoke("Level", 2f);
-        
-    }
-
-    private void Update()
-    {
+        Invoke(nameof(GameOverCanvas), 22f);
+        Invoke(nameof(Level), 2f);
         
     }
     
@@ -60,7 +49,7 @@ public class GameController : MonoBehaviour
 
     }
 
-    public void uptadeScore()
+    public void UptadeScore()
     {
         score++;
         scoreText.text = score.ToString();
@@ -73,7 +62,7 @@ public class GameController : MonoBehaviour
 
     public void Quit()
     {
-        UnityEditor.EditorApplication.isPlaying = false;
+        
         Application.Quit();
     }
 

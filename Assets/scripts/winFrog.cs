@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class winFrog : MonoBehaviour
+public class WinFrog : MonoBehaviour
 {
     public bool dirRight = true;
     Rigidbody2D enemy;

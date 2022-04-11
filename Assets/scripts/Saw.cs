@@ -8,22 +8,17 @@ public class Saw : MonoBehaviour
     public float movTime;
     public float speed;
     public float timer;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
         if (dirRight)
         {
-            transform.Translate(Vector2.right * speed * Time.deltaTime);
+            transform.Translate(speed * Time.deltaTime * Vector2.right);
         }
         else
         {
-            transform.Translate(Vector2.left * speed * Time.deltaTime);
+            transform.Translate(speed * Time.deltaTime * Vector2.left);
         }
 
         timer += Time.deltaTime;

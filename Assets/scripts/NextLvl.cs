@@ -28,7 +28,7 @@ public class NextLvl : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Player" && canNextLvl)
+        if(collision.gameObject.CompareTag("Player") && canNextLvl)
         {
             
             SceneManager.LoadScene(lvlName);
@@ -42,7 +42,7 @@ public class NextLvl : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player" && !canNextLvl)
+        if (collision.gameObject.CompareTag("Player") && !canNextLvl)
         {
             GameController.instance.message.SetActive(false);
         }

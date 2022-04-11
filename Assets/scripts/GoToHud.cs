@@ -7,13 +7,6 @@ public class GoToHud : MonoBehaviour
     bool go;
     public Transform hud;
     public AudioSource apple;
-    
-    // Start is called before the first frame update
-    void Awake()
-    {
-        
-        
-    }
 
     // Update is called once per frame
     void Update()

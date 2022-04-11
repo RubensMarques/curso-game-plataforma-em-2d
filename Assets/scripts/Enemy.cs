@@ -11,15 +11,13 @@ public class Enemy : MonoBehaviour
    
     Rigidbody2D enemy;
     
-    
-    Animator anim;
    
     // Start is called before the first frame update
     void Start()
     {
         enemy = GetComponent<Rigidbody2D>();
         
-        anim = GetComponent<Animator>();
+      
         
     }
     

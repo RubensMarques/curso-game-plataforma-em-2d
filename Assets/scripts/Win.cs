@@ -9,22 +9,20 @@ public class Win : MonoBehaviour
     public GameObject panel;
     public Rigidbody2D credits;
     Rigidbody2D player;
-    Animator anim;
+    
     bool jump;
     // Start is called before the first frame update
     void Start()
     {
         player = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
-        
-        
+     
     }
 
     // Update is called once per frame
     void Update()
     {
-        Invoke("MainMenu", 55f);
-        Invoke("ClosePanel", 29f);
+        Invoke(nameof(MainMenu), 55f);
+        Invoke(nameof(ClosePanel), 29f);
         credits.position += new Vector2(credits.velocity.x, Time.deltaTime*60);
     }
 

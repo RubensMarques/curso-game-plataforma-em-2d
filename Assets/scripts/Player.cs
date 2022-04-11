@@ -8,8 +8,7 @@ public class Player : MonoBehaviour
 
     
     Rigidbody2D player;
-    
-    CapsuleCollider2D caps;
+   
     public AudioSource sJump; 
     
     Animator anim;
@@ -27,7 +26,7 @@ public class Player : MonoBehaviour
        
         
             player = GetComponent<Rigidbody2D>();
-            caps = GetComponent<CapsuleCollider2D>();
+       
             anim = GetComponent<Animator>();
             
             GameController.instance.score = 0;
@@ -146,8 +145,8 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("apple"))
         {
 
-            GameController.instance.uptadeScore();
-                //GameController.instance.RefreshScreen();
+            GameController.instance.UptadeScore();
+            
           
         }
     }
